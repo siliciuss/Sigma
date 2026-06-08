@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimi - Augmenting Human Intellect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="page-transition"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo" onclick="router.navigate('home')">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                        <path d="M10 16L14 20L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="logo-text">Kimi</span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active" data-page="home">Home</a>
+                <a href="#ecosystem" class="nav-link" data-page="ecosystem">Ecosystem</a>
+                <a href="#framework" class="nav-link" data-page="framework">Framework</a>
+                <a href="#analytics" class="nav-link" data-page="analytics">Analytics</a>
+                <a href="#gallery" class="nav-link" data-page="gallery">Gallery</a>
+                <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                    </svg>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" class="mobile-link" data-page="home">Home</a>
+        <a href="#ecosystem" class="mobile-link" data-page="ecosystem">Ecosystem</a>
+        <a href="#framework" class="mobile-link" data-page="framework">Framework</a>
+        <a href="#analytics" class="mobile-link" data-page="analytics">Analytics</a>
+        <a href="#gallery" class="mobile-link" data-page="gallery">Gallery</a>
+        <a href="#contact" class="mobile-link" data-page="contact">Contact</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <main id="mainContent">
+
+        <!-- HOME PAGE -->
+        <section class="page" id="page-home">
+            <div class="hero">
+                <div class="hero-bg">
+                    <div class="gradient-orb orb-1"></div>
+                    <div class="gradient-orb orb-2"></div>
+                    <div class="gradient-orb orb-3"></div>
+                </div>
+                <div class="hero-content">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">Conceptual Framework v2.0</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="line">Augmenting</span>
+                        <span class="line highlight">Human Intellect</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        A dynamic ecosystem for using modern technology to give direct aid to an individual 
+                        in comprehending complex situations, isolating significant factors, and solving problems.
+                    </p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary" onclick="router.navigate('ecosystem')">
+                            Explore Ecosystem
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="btn btn-secondary" onclick="router.navigate('framework')">
+                            View Framework
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" data-count="4">0</div>
+                            <div class="stat-label">Augmentation Classes</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-count="1500">0</div>
+                            <div class="stat-label">Neural Particles</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-count="98">0</div>
+                            <div class="stat-label">% Complexity Handled</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-count="1962">0</div>
+                            <div class="stat-label">Framework Origin</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <span>Scroll to explore</span>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <div class="container">
+                    <h2 class="section-title">The Four Means of Augmentation</h2>
+                    <div class="features-grid">
+                        <div class="feature-card" data-color="cyan">
+                            <div class="feature-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <h3>Artifacts</h3>
+                            <p>Physical objects designed for manipulation of symbols and materials. Computers, displays, and storage devices that extend motor channels.</p>
+                            <div class="feature-progress">
+                                <div class="progress-bar" style="--progress: 85%"></div>
+                                <span>85% Extension</span>
+                            </div>
+                        </div>
+                        <div class="feature-card" data-color="pink">
+                            <div class="feature-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+                                </svg>
+                            </div>
+                            <h3>Language</h3>
+                            <p>Symbol systems for conceptual modeling. The way we parcel reality into concepts and attach symbols for conscious manipulation.</p>
+                            <div class="feature-progress">
+                                <div class="progress-bar" style="--progress: 92%"></div>
+                                <span>92% Modeling</span>
+                            </div>
+                        </div>
+                        <div class="feature-card" data-color="yellow">
+                            <div class="feature-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <path d="M22 4L12 14.01l-3-3"/>
+                                </svg>
+                            </div>
+                            <h3>Methodology</h3>
+                            <p>Procedures and strategies for organizing goal-centered activity. Structured approaches to breaking complexity into manageable operations.</p>
+                            <div class="feature-progress">
+                                <div class="progress-bar" style="--progress: 78%"></div>
+                                <span>78% Organization</span>
+                            </div>
+                        </div>
+                        <div class="feature-card" data-color="green">
+                            <div class="feature-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 010 7.75"/>
+                                </svg>
+                            </div>
+                            <h3>Training</h3>
+                            <p>Conditioning to bring skills to operational effectiveness. The bridge between potential capability and actual performance.</p>
+                            <div class="feature-progress">
+                                <div class="progress-bar" style="--progress: 95%"></div>
+                                <span>95% Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ECOSYSTEM PAGE -->
+        <section class="page hidden" id="page-ecosystem">
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title">The Augmentation Ecosystem</h1>
+                    <p class="page-subtitle">Interactive visualization of the four fundamental classes of augmentation means</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="ecosystem-layout">
+                    <div class="ecosystem-viz">
+                        <svg viewBox="0 0 600 500" class="ecosystem-svg">
+                            <defs>
+                                <radialGradient id="glow-cyan" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#00d4ff" stop-opacity="0.3"/><stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/></radialGradient>
+                                <radialGradient id="glow-pink" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ff6b6b" stop-opacity="0.3"/><stop offset="100%" stop-color="#ff6b6b" stop-opacity="0"/></radialGradient>
+                                <radialGradient id="glow-yellow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffd93d" stop-opacity="0.3"/><stop offset="100%" stop-color="#ffd93d" stop-opacity="0"/></radialGradient>
+                                <radialGradient id="glow-green" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#6bcb77" stop-opacity="0.3"/><stop offset="100%" stop-color="#6bcb77" stop-opacity="0"/></radialGradient>
+                            </defs>
+                            <circle cx="300" cy="250" r="80" fill="url(#glow-cyan)" class="pulse"/>
+                            <circle cx="300" cy="250" r="60" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+                            <circle cx="300" cy="250" r="40" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2"/>
+                            <text x="300" y="245" text-anchor="middle" fill="#00d4ff" font-size="12" font-family="JetBrains Mono" font-weight="600">HUMAN</text>
+                            <text x="300" y="260" text-anchor="middle" fill="#00d4ff" font-size="10" font-family="JetBrains Mono" opacity="0.7">INTELLECT</text>
+
+                            <line class="conn-line" x1="300" y1="190" x2="300" y2="80" stroke="#00d4ff"/>
+                            <line class="conn-line" x1="360" y1="250" x2="520" y2="250" stroke="#ff6b6b"/>
+                            <line class="conn-line" x1="300" y1="310" x2="300" y2="420" stroke="#ffd93d"/>
+                            <line class="conn-line" x1="240" y1="250" x2="80" y2="250" stroke="#6bcb77"/>
+
+                            <g class="eco-node" onclick="selectEcosystemNode('artifact')">
+                                <circle cx="300" cy="80" r="50" fill="url(#glow-cyan)"/>
+                                <circle cx="300" cy="80" r="35" fill="rgba(0,212,255,0.15)" stroke="#00d4ff" stroke-width="2"/>
+                                <text x="300" y="76" text-anchor="middle" fill="#00d4ff" font-size="11" font-family="JetBrains Mono" font-weight="600">ARTIFACTS</text>
+                                <text x="300" y="90" text-anchor="middle" fill="#00d4ff" font-size="8" opacity="0.6">Physical Objects</text>
+                            </g>
+                            <g class="eco-node" onclick="selectEcosystemNode('language')">
+                                <circle cx="520" cy="250" r="50" fill="url(#glow-pink)"/>
+                                <circle cx="520" cy="250" r="35" fill="rgba(255,107,107,0.15)" stroke="#ff6b6b" stroke-width="2"/>
+                                <text x="520" y="246" text-anchor="middle" fill="#ff6b6b" font-size="11" font-family="JetBrains Mono" font-weight="600">LANGUAGE</text>
+                                <text x="520" y="260" text-anchor="middle" fill="#ff6b6b" font-size="8" opacity="0.6">Symbol Systems</text>
+                            </g>
+                            <g class="eco-node" onclick="selectEcosystemNode('methodology')">
+                                <circle cx="300" cy="420" r="50" fill="url(#glow-yellow)"/>
+                                <circle cx="300" cy="420" r="35" fill="rgba(255,217,61,0.15)" stroke="#ffd93d" stroke-width="2"/>
+                                <text x="300" y="416" text-anchor="middle" fill="#ffd93d" font-size="10" font-family="JetBrains Mono" font-weight="600">METHODOLOGY</text>
+                                <text x="300" y="430" text-anchor="middle" fill="#ffd93d" font-size="8" opacity="0.6">Procedures</text>
+                            </g>
+                            <g class="eco-node" onclick="selectEcosystemNode('training')">
+                                <circle cx="80" cy="250" r="50" fill="url(#glow-green)"/>
+                                <circle cx="80" cy="250" r="35" fill="rgba(107,203,119,0.15)" stroke="#6bcb77" stroke-width="2"/>
+                                <text x="80" y="246" text-anchor="middle" fill="#6bcb77" font-size="11" font-family="JetBrains Mono" font-weight="600">TRAINING</text>
+                                <text x="80" y="260" text-anchor="middle" fill="#6bcb77" font-size="8" opacity="0.6">Conditioning</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="ecosystem-detail" id="ecosystemDetail">
+                        <div class="detail-header">
+                            <div class="detail-indicator" id="detailIndicator"></div>
+                            <h2 id="detailTitle">Artifacts</h2>
+                            <span class="detail-code" id="detailCode">MEANS_01</span>
+                        </div>
+                        <p class="detail-desc" id="detailDesc">Physical objects designed to provide for human comfort, for the manipulation of things or materials, and for the manipulation of symbols.</p>
+                        <div class="detail-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Reach</span>
+                                <div class="metric-bar"><div class="metric-fill" id="metricReach" style="width: 85%"></div></div>
+                                <span class="metric-value" id="metricReachVal">85%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Precision</span>
+                                <div class="metric-bar"><div class="metric-fill" id="metricPrecision" style="width: 92%"></div></div>
+                                <span class="metric-value" id="metricPrecisionVal">92%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Speed</span>
+                                <div class="metric-bar"><div class="metric-fill" id="metricSpeed" style="width: 78%"></div></div>
+                                <span class="metric-value" id="metricSpeedVal">78%</span>
+                            </div>
+                        </div>
+                        <div class="detail-tags">
+                            <span class="tag" id="detailTag1">Tools</span>
+                            <span class="tag" id="detailTag2">Computers</span>
+                            <span class="tag" id="detailTag3">Displays</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FRAMEWORK PAGE -->
+        <section class="page hidden" id="page-framework">
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title">The Conceptual Framework</h1>
+                    <p class="page-subtitle">Understanding information flow and augmentation transformation</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="framework-flow">
+                    <div class="flow-step">
+                        <div class="flow-icon blue">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </div>
+                        <h3>Sensory Input</h3>
+                        <p>Limited sensory channels receive information from the external world</p>
+                        <div class="flow-arrow">↓</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon purple">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h3>Processing</h3>
+                        <p>Conscious and unconscious processing of received and self-generated information</p>
+                        <div class="flow-arrow">↓</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon green">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <h3>Motor Output</h3>
+                        <p>Limited motor channels transmit effect back to the world</p>
+                    </div>
+                </div>
+
+                <div class="augmentation-layer">
+                    <h2>Augmentation Layer</h2>
+                    <div class="layer-grid">
+                        <div class="layer-item cyan">
+                            <div class="layer-bar"></div>
+                            <span>Artifacts</span>
+                        </div>
+                        <div class="layer-item pink">
+                            <div class="layer-bar"></div>
+                            <span>Language</span>
+                        </div>
+                        <div class="layer-item yellow">
+                            <div class="layer-bar"></div>
+                            <span>Methodology</span>
+                        </div>
+                        <div class="layer-item green">
+                            <div class="layer-bar"></div>
+                            <span>Training</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="problem-solution">
+                    <div class="ps-card problem">
+                        <div class="ps-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                            <h3>The Problem</h3>
+                        </div>
+                        <p>The individual does not use his information and processing to grapple directly with complex situations. The situation is generally too complex to yield directly to his motor actions.</p>
+                        <div class="ps-example">
+                            <strong>The Aborigine Paradox:</strong> An aborigine with all our basic sensory-mental-motor capabilities, but without our background of indirect knowledge, cannot organize the proper actions to drive a car, request a library book, or compose a letter.
+                        </div>
+                    </div>
+                    <div class="ps-card solution">
+                        <div class="ps-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <h3>The Solution</h3>
+                        </div>
+                        <p>Our culture has evolved means to organize the little things we can do with our basic capabilities so that we can derive comprehension from truly complex situations and accomplish problem-solving.</p>
+                        <div class="ps-example">
+                            <strong>The New System:</strong> A trained human being together with his artifacts, language, and methodology—integrated with computers and computer-controlled information devices.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANALYTICS PAGE -->
+        <section class="page hidden" id="page-analytics">
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Capability Analytics</h1>
+                    <p class="page-subtitle">Real-time simulation of augmentation impact on human performance</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="analytics-grid">
+                    <div class="analytics-panel">
+                        <h3>Complexity Handling</h3>
+                        <canvas id="complexityChart"></canvas>
+                    </div>
+                    <div class="analytics-panel">
+                        <h3>Efficiency Over Time</h3>
+                        <canvas id="efficiencyChart"></canvas>
+                    </div>
+                    <div class="analytics-panel wide">
+                        <h3>Augmentation Impact Matrix</h3>
+                        <div class="matrix-controls">
+                            <label class="toggle-label">
+                                <input type="checkbox" class="matrix-toggle" data-layer="artifact" checked>
+                                <span class="toggle-slider cyan"></span>
+                                <span>Artifacts</span>
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox" class="matrix-toggle" data-layer="language" checked>
+                                <span class="toggle-slider pink"></span>
+                                <span>Language</span>
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox" class="matrix-toggle" data-layer="methodology" checked>
+                                <span class="toggle-slider yellow"></span>
+                                <span>Methodology</span>
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox" class="matrix-toggle" data-layer="training" checked>
+                                <span class="toggle-slider green"></span>
+                                <span>Training</span>
+                            </label>
+                        </div>
+                        <canvas id="matrixChart"></canvas>
+                    </div>
+                    <div class="analytics-panel">
+                        <h3>System Status</h3>
+                        <div class="status-display">
+                            <div class="status-ring" id="statusRing">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="8" opacity="0.2"/>
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="0" stroke-linecap="round" id="statusCircle"/>
+                                </svg>
+                                <div class="status-text">
+                                    <span class="status-percent" id="statusPercent">98%</span>
+                                    <span class="status-label" id="statusLabel">Fully Augmented</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY PAGE -->
+        <section class="page hidden" id="page-gallery">
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Visual Gallery</h1>
+                    <p class="page-subtitle">Conceptual visualizations of the augmentation ecosystem</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="gallery-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="artifacts">Artifacts</button>
+                    <button class="filter-btn" data-filter="language">Language</button>
+                    <button class="filter-btn" data-filter="methodology">Methodology</button>
+                    <button class="filter-btn" data-filter="training">Training</button>
+                </div>
+                <div class="gallery-grid" id="galleryGrid">
+                    <div class="gallery-item" data-category="artifacts">
+                        <div class="gallery-img">
+                            <svg viewBox="0 0 400 300" class="generated-img">
+                                <defs>
+                                    <linearGradient id="art-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.3"/>
+                                        <stop offset="100%" stop-color="#0099cc" stop-opacity="0.1"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#art-grad)" rx="12"/>
+                                <circle cx="200" cy="150" r="80" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.6"/>
+                                <circle cx="200" cy="150" r="60" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.4"/>
+                                <circle cx="200" cy="150" r="40" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.3"/>
+                                <rect x="160" y="110" width="80" height="80" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.5" transform="rotate(45 200 150)"/>
+                                <text x="200" y="270" text-anchor="middle" fill="#00d4ff" font-family="JetBrains Mono" font-size="14">ARTIFACTS</text>
+                            </svg>
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Physical Interfaces</h4>
+                            <p>Tools, computers, and displays</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="language">
+                        <div class="gallery-img">
+                            <svg viewBox="0 0 400 300" class="generated-img">
+                                <defs>
+                                    <linearGradient id="lang-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#ff6b6b" stop-opacity="0.3"/>
+                                        <stop offset="100%" stop-color="#cc5555" stop-opacity="0.1"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#lang-grad)" rx="12"/>
+                                <text x="200" y="100" text-anchor="middle" fill="#ff6b6b" font-family="JetBrains Mono" font-size="20" opacity="0.8">{ }</text>
+                                <text x="200" y="140" text-anchor="middle" fill="#ff6b6b" font-family="JetBrains Mono" font-size="16" opacity="0.6">ABC</text>
+                                <text x="200" y="180" text-anchor="middle" fill="#ff6b6b" font-family="JetBrains Mono" font-size="24" opacity="0.4">Σ</text>
+                                <text x="200" y="220" text-anchor="middle" fill="#ff6b6b" font-family="JetBrains Mono" font-size="18" opacity="0.7">0101</text>
+                                <text x="200" y="270" text-anchor="middle" fill="#ff6b6b" font-family="JetBrains Mono" font-size="14">LANGUAGE</text>
+                            </svg>
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Symbol Systems</h4>
+                            <p>Mathematics, notation, programming</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="methodology">
+                        <div class="gallery-img">
+                            <svg viewBox="0 0 400 300" class="generated-img">
+                                <defs>
+                                    <linearGradient id="meth-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#ffd93d" stop-opacity="0.3"/>
+                                        <stop offset="100%" stop-color="#ccaa30" stop-opacity="0.1"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#meth-grad)" rx="12"/>
+                                <rect x="100" y="80" width="200" height="40" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.6" rx="4"/>
+                                <rect x="100" y="130" width="160" height="40" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.5" rx="4"/>
+                                <rect x="100" y="180" width="120" height="40" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.4" rx="4"/>
+                                <path d="M300 100 L320 100 L320 200 L300 200" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.3"/>
+                                <text x="200" y="270" text-anchor="middle" fill="#ffd93d" font-family="JetBrains Mono" font-size="14">METHODOLOGY</text>
+                            </svg>
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Process Flow</h4>
+                            <p>Algorithms and workflows</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="training">
+                        <div class="gallery-img">
+                            <svg viewBox="0 0 400 300" class="generated-img">
+                                <defs>
+                                    <linearGradient id="train-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#6bcb77" stop-opacity="0.3"/>
+                                        <stop offset="100%" stop-color="#4a9a55" stop-opacity="0.1"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#train-grad)" rx="12"/>
+                                <circle cx="150" cy="120" r="30" fill="none" stroke="#6bcb77" stroke-width="2" opacity="0.6"/>
+                                <circle cx="250" cy="120" r="30" fill="none" stroke="#6bcb77" stroke-width="2" opacity="0.6"/>
+                                <circle cx="200" cy="180" r="30" fill="none" stroke="#6bcb77" stroke-width="2" opacity="0.6"/>
+                                <line x1="150" y1="120" x2="250" y2="120" stroke="#6bcb77" stroke-width="1" opacity="0.4"/>
+                                <line x1="150" y1="120" x2="200" y2="180" stroke="#6bcb77" stroke-width="1" opacity="0.4"/>
+                                <line x1="250" y1="120" x2="200" y2="180" stroke="#6bcb77" stroke-width="1" opacity="0.4"/>
+                                <text x="200" y="270" text-anchor="middle" fill="#6bcb77" font-family="JetBrains Mono" font-size="14">TRAINING</text>
+                            </svg>
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Neural Networks</h4>
+                            <p>Skill conditioning and integration</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="artifacts">
+                        <div class="gallery-img">
+                            <svg viewBox="0 0 400 300" class="generated-img">
+                                <defs>
+                                    <linearGradient id="art2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.2"/>
+                                        <stop offset="100%" stop-color="#0099cc" stop-opacity="0.05"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#art2-grad)" rx="12"/>
+                                <rect x="120" y="100" width="160" height="100" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.5" rx="8"/>
+                                <rect x="140" y="120" width="120" height="60" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.4" rx="4"/>
+                                <circle cx="200" cy="150" r="20" fill="#00d4ff" opacity="0.2"/>
+                                <text x="200" y="270" text-anchor="middle" fill="#00d4ff" font-family="JetBrains Mono" font-size="14">COMPUTER</text>
+                            </svg>
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Computing Device</h4>
+                            <p>Information processing unit</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="language">
+                        <div class="gallery-img">
+                            <svg viewBox="0 0 400 300" class="generated-img">
+                                <defs>
+                                    <linearGradient id="lang2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#ff6b6b" stop-opacity="0.2"/>
+                                        <stop offset="100%" stop-color="#cc5555" stop-opacity="0.05"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#lang2-grad)" rx="12"/>
+                                <path d="M100 200 Q150 100 200 150 T300 150" fill="none" stroke="#ff6b6b" stroke-width="2" opacity="0.5"/>
+                                <path d="M100 200 Q150 250 200 200 T300 200" fill="none" stroke="#ff6b6b" stroke-width="2" opacity="0.3"/>
+                                <circle cx="200" cy="150" r="8" fill="#ff6b6b" opacity="0.6"/>
+                                <circle cx="200" cy="200" r="8" fill="#ff6b6b" opacity="0.4"/>
+                                <text x="200" y="270" text-anchor="middle" fill="#ff6b6b" font-family="JetBrains Mono" font-size="14">CONCEPT MAP</text>
+                            </svg>
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Conceptual Mapping</h4>
+                            <p>Knowledge representation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section class="page hidden" id="page-contact">
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Get in Touch</h1>
+                    <p class="page-subtitle">Connect with the augmentation research community</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="contact-layout">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <h3>Email</h3>
+                            <p>research@augmentintellect.org</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <h3>Location</h3>
+                            <p>Stanford Research Institute<br>Augmentation Research Center</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="2" y1="12" x2="22" y2="12"/>
+                                    <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                                </svg>
+                            </div>
+                            <h3>Community</h3>
+                            <p>Join 2,400+ researchers exploring human-computer augmentation</p>
+                        </div>
+                    </div>
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required placeholder="Your name">
+                                <span class="form-error">Please enter your name</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="your@email.com">
+                                <span class="form-error">Please enter a valid email</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="research">Research Collaboration</option>
+                                    <option value="artifacts">Artifacts Development</option>
+                                    <option value="language">Language Systems</option>
+                                    <option value="methodology">Methodology Design</option>
+                                    <option value="training">Training Programs</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Tell us about your augmentation interests..."></textarea>
+                                <span class="form-error">Please enter a message</span>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">
+                                Send Message
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </form>
+                        <div class="form-success" id="formSuccess">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <h3>Message Sent!</h3>
+                            <p>Thank you for reaching out. We'll respond within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-icon">
+                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M10 16L14 20L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span>Kimi</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#home" onclick="router.navigate('home')">Home</a>
+                    <a href="#ecosystem" onclick="router.navigate('ecosystem')">Ecosystem</a>
+                    <a href="#framework" onclick="router.navigate('framework')">Framework</a>
+                    <a href="#analytics" onclick="router.navigate('analytics')">Analytics</a>
+                </div>
+                <div class="footer-copy">
+                    Based on "Augmenting Human Intellect" by Douglas C. Engelbart, 1962
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
