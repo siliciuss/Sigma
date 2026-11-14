@@ -26,6 +26,11 @@ h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.12;font-weight:800;max-width
 .hero p.lead{color:var(--mut);font-size:1.15rem;max-width:720px;margin-top:20px}
 .hero .key{margin-top:28px;padding:16px 20px;border-left:3px solid var(--acc);background:var(--bg2);border-radius:0 10px 10px 0;color:var(--txt);max-width:760px}
 .hero .key strong{color:var(--acc)}
+.hero .num {color: #28a745; /* Change to your preferred green shade */
+}
+/* Option B: Create a reusable utility class */
+.text-green {color: #28a745;
+}
 /* SECTIONS */
 section{padding:64px 0;border-top:1px solid var(--line)}
 h2{font-size:1.9rem;font-weight:700;margin-bottom:8px}
@@ -104,8 +109,8 @@ footer .wrap p{max-width:900px;color:var(--mut);font-size:.85rem}
 <header class="hero"><div class="wrap">
   <div>
     <span class="kicker">Business Strategy Report · 2026</span>
-      <h1>CoWork Collaboration Ecosystem as a Service.<br><span class="num">- Meraki Project.</span></h1>
-  </div>
+      <h1>CoWork Collaboration Ecosystem as a Service.<br><span class="num" style="color: #28a745;">- Meraki Project.</span></h1>
+  </div></div>
   <p class="lead">Not a coworking space with better furniture. A deliberately orchestrated alignment of people, space, services, and partners around one value proposition: helping members work better, meet the right people, and grow faster than they could alone.</p>
   <div class="key"><strong>The core insight:</strong> Rent is what you charge for space. <strong>Ecosystem value</strong> is why members stay, refer others, and buy more than a desk.</div>
   <div class="stats">
