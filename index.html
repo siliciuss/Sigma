@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoWork Collaboration Ecosystem as a Service</title>
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f4f6f9; --card:#ffffff; --line:#dde3ec;
+  --txt:#1a2230; --mut:#5a6678; --acc:#0e9a5c; --acc2:#2b6fd4; --warn:#c07f1a; --bad:#c23e3e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.6}
+a{color:var(--acc2);text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+/* NAV */
+nav{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+nav .wrap{display:flex;align-items:center;gap:18px;height:58px;overflow-x:auto}
+.logo{font-weight:700;white-space:nowrap;color:var(--acc)}
+nav a{color:var(--mut);font-size:.85rem;white-space:nowrap;padding:6px 4px}
+nav a:hover{color:var(--txt)}
+/* HERO */
+.hero{padding:96px 0 72px;background:radial-gradient(1000px 500px at 70% -10%,rgba(43,111,212,.10),transparent),radial-gradient(800px 400px at 10% 110%,rgba(14,154,92,.08),transparent)}
+.kicker{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);border:1px solid var(--acc);border-radius:999px;padding:6px 14px;margin-bottom:20px}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.12;font-weight:800;max-width:820px}
+.hero p.lead{color:var(--mut);font-size:1.15rem;max-width:720px;margin-top:20px}
+.hero .key{margin-top:28px;padding:16px 20px;border-left:3px solid var(--acc);background:var(--bg2);border-radius:0 10px 10px 0;color:var(--txt);max-width:760px}
+.hero .key strong{color:var(--acc)}
+/* SECTIONS */
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-size:1.9rem;font-weight:700;margin-bottom:8px}
+.sub{color:var(--mut);margin-bottom:32px;max-width:760px}
+h3{font-size:1.15rem;margin:26px 0 10px;color:var(--acc2)}
+p{color:#3a4556;margin-bottom:12px;max-width:820px}
+/* STAT GRID */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.stat .num{font-size:2rem;font-weight:800;color:var(--acc)}
+.stat .lbl{color:var(--mut);font-size:.88rem;margin-top:4px}
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.card h4{font-size:1.05rem;margin-bottom:8px;color:var(--txt)}
+.card p{font-size:.92rem;color:var(--mut);margin:0}
+.card .tag{display:inline-block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+/* PILLARS */
+.pillar{border-left:3px solid var(--acc2);padding-left:16px;margin-bottom:18px}
+.pillar h4{margin-bottom:4px}
+.pillar p{font-size:.92rem;color:var(--mut)}
+/* TABLE */
+.tbl-wrap{overflow-x:auto;margin-top:16px}
+table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:640px}
+th{background:var(--bg2);text-align:left;color:var(--acc);padding:12px 14px;border-bottom:2px solid var(--line)}
+td{padding:12px 14px;border-bottom:1px solid var(--line);color:#3a4556;vertical-align:top}
+tr:hover td{background:rgba(43,111,212,.06)}
+/* MATH */
+.formula{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:16px 20px;font-family:ui-monospace,Consolas,monospace;color:var(--acc);margin:14px 0;font-size:.95rem}
+/* QUOTES */
+.quote{border-left:3px solid var(--warn);background:var(--bg2);padding:14px 18px;border-radius:0 10px 10px 0;color:#2c3646;font-style:italic;margin:16px 0;max-width:820px}
+/* RISKS */
+.risk{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:14px}
+.risk h4{color:var(--bad)}
+.risk .mit{color:var(--mut);font-size:.92rem}
+.risk .mit strong{color:var(--acc)}
+/* MOVES */
+.move{counter-increment:m;position:relative;padding:20px 20px 20px 64px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:14px}
+.move::before{content:counter(m);position:absolute;left:20px;top:20px;width:30px;height:30px;border-radius:50%;background:var(--acc);color:#ffffff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.moves{counter-reset:m}
+.move h4{margin-bottom:6px}
+.move p{font-size:.92rem;color:var(--mut);margin:0}
+/* DASHBOARD */
+.dash{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.dash{grid-template-columns:1fr}}
+.dash ul{list-style:none;padding:0}
+.dash li{padding:8px 0;border-bottom:1px dashed var(--line);color:#3a4556;font-size:.92rem}
+.dash li span{color:var(--acc2);font-weight:600}
+/* ACTORS */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tab-btn{padding:8px 16px;border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:999px;cursor:pointer;font-size:.88rem}
+.tab-btn.active{background:var(--acc);color:#ffffff;border-color:var(--acc);font-weight:600}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.tab-panel p{max-width:820px}
+/* FOOTER */
+footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mut);font-size:.85rem}
+footer .wrap p{max-width:900px;color:var(--mut);font-size:.85rem}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <span class="logo">⟡ CoWork Ecosystem</span>
+  <a href="#what">What It Is</a>
+  <a href="#market">Market</a>
+  <a href="#value">Value</a>
+  <a href="#models">Models</a>
+  <a href="#unit">Unit Economics</a>
+  <a href="#cases">Case Studies</a>
+  <a href="#playbook">Playbook</a>
+  <a href="#risks">Risks</a>
+  <a href="#dashboard">Dashboard</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <span class="kicker">Business Strategy Report · 2026</span>
+  <h1>CoWork Collaboration Ecosystem as a Service</h1>
+  <p class="lead">Not a coworking space with better furniture. A deliberately orchestrated alignment of people, space, services, and partners around one value proposition: helping members work better, meet the right people, and grow faster than they could alone.</p>
+  <div class="key"><strong>The core insight:</strong> Rent is what you charge for space. <strong>Ecosystem value</strong> is why members stay, refer others, and buy more than a desk.</div>
+  <div class="stats">
+    <div class="stat"><div class="num">$22.6B</div><div class="lbl">Global market 2026 → $62.8B by 2033 (15.7% CAGR)</div></div>
+    <div class="stat"><div class="num">54%</div><div class="lbl">Global office utilization vs. a 79% target — a 25-pt gap</div></div>
+    <div class="stat"><div class="num">3%</div><div class="lbl">Large enterprises using flex for &gt;10% of portfolio — still early</div></div>
+    <div class="stat"><div class="num">68%</div><div class="lbl">Average global occupancy, start of 2025</div></div>
+    <div class="stat"><div class="num">54%</div><div class="lbl">Operators profitable over the prior 12 months</div></div>
+  </div>
+</div></header>
+
+<section id="what"><div class="wrap">
+  <h2>1 · What a CoWork Collaboration Ecosystem Really Is</h2>
+  <p class="sub">The literature offers two lenses — and the difference matters for strategy.</p>
+  <div class="grid">
+    <div class="card"><span class="tag">Lens A</span><h4>Ecosystem-as-affiliation</h4><p>The "we have 500 members" view. A community of connected actors defined by membership in a network. Good for marketing, weak for operations.</p></div>
+    <div class="card"><span class="tag">Lens B</span><h4>Ecosystem-as-structure</h4><p>The "who must do what, in what sequence, for the member to get the promised outcome" view. This is the actionable lens — members pay for outcomes, not affiliation.</p></div>
+  </div>
+  <h3>The Keystone Role</h3>
+  <p>A coworking operator is a natural ecosystem keystone because it controls three common assets:</p>
+  <div class="grid">
+    <div class="card"><h4>🧱 Physical platform</h4><p>Desks, private offices, meeting rooms, event space, reliable Wi-Fi, reception, security.</p></div>
+    <div class="card"><h4>🤝 Social platform</h4><p>Curated introductions, rituals, events, norms, and trust.</p></div>
+    <div class="card"><h4>💼 Commercial platform</h4><p>Lead flow, referrals, partnerships, procurement, and member visibility.</p></div>
+  </div>
+  <div class="quote">The keystone test: create value in the ecosystem, then share enough of it that others stay. A keystone that extracts too much is abandoned. One that creates no platform value fails to attract members at all.</div>
+</div></section>
+
+<section id="market"><div class="wrap">
+  <h2>2 · Why Now: Market Context</h2>
+  <p class="sub">Five structural forces are converging on the ecosystem model.</p>
+  <div class="pillar"><h4>The utilization problem</h4><p>Global office utilization averages 54% against a 79% target (JLL). Companies want to control cost while staying ready to grow — the answer is "core plus flex": convert part of the portfolio into variable expense.</p></div>
+  <div class="pillar"><h4>Corporate adoption is still early</h4><p>Only 3% of large enterprises use flex for more than 10% of their portfolio; 42% allocate 1% or less of headcount to flex. The market is early, fragmented, and still learning what good looks like — sophisticated enterprise service is the durable demand pool.</p></div>
+  <div class="pillar"><h4>AI as a new demand driver</h4><p>Unpredictable workforce transformation makes long-term headcount planning harder. Flex space is a strategic hedge: if you cannot forecast headcount in three years, don't lock it into ten-year leases.</p></div>
+  <div class="pillar"><h4>Operator health is improving</h4><p>68% average occupancy; 54% profitable, ~28% break-even, 18% loss-making. But member acquisition remains the biggest challenge — optimism is useful, but it is not a strategy.</p></div>
+  <div class="pillar"><h4>The contract shift</h4><p>The old model of signing long leases and reselling desks short proved fragile at scale (WeWork). The industry has moved toward management agreements, franchising, partnerships, and hospitality-style operations.</p></div>
+</div></section>
+
+<section id="value"><div class="wrap">
+  <h2>3 · How Collaboration Actually Creates Value</h2>
+  <p class="sub">The mechanism is weak ties, bridging capital, and serendipity — managed as a process, not hoped for.</p>
+  <div class="grid">
+    <div class="card"><span class="tag">Mechanism</span><h4>Bridging social capital</h4><p>Loose, diverse connections across industries carry novel information and opportunities (Granovetter's weak ties). Layout creates encounters; facilitative tools make follow-up easy; community management turns encounters into relationships.</p></div>
+    <div class="card"><span class="tag">Evidence</span><h4>Collaboration → innovation</h4><p>A study of 75 organizations across 17 coworking spaces found a positive interrelation between collaboration and innovation — collaboration changes what firms can do and how they make money.</p></div>
+    <div class="card"><span class="tag">Geography</span><h4>City vs. region</h4><p>City spaces win on corporate and international connectivity; non-urban spaces win on regional network density and local rootedness. Copying a big-city playbook into a small market usually fails.</p></div>
+    <div class="card"><span class="tag">Caution</span><h4>Collaboration decays</h4><p>Research at Level 39 (Haefliger &amp; Yacoub) found interactions became less meaningful over time without a catalyst. A catalyst — actors who facilitate and sustain cooperation — is required.</p></div>
+  </div>
+  <div class="quote">The community manager is not reception. The role is closer to a product manager for relationships — and the best operators treat it as a profit center, because it drives the two metrics that matter most: retention and referral.</div>
+</div></section>
+
+<section id="models"><div class="wrap">
+  <h2>4 · Four Business Models</h2>
+  <p class="sub">Operators can choose from four core structures — often blended across a portfolio.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Model</th><th>Who funds build-out</th><th>Who bears lease risk</th><th>Operator earns</th><th>Best for</th></tr>
+    <tr><td><strong>Direct lease</strong></td><td>Operator</td><td>Operator</td><td>Spread between membership revenue and fixed rent + operating costs</td><td>Strong local demand, conservative rent, deep runway</td></tr>
+    <tr><td><strong>Management agreement</strong></td><td>Landlord</td><td>Landlord</td><td>Base fee + share of profit or revenue</td><td>Scaling on capability without balance-sheet risk</td></tr>
+    <tr><td><strong>Revenue share / JV</strong></td><td>Shared, by contract</td><td>Shared, by contract</td><td>Agreed split after costs</td><td>Landlord-operator partnerships needing aligned incentives</td></tr>
+    <tr><td><strong>Franchise / license</strong></td><td>Franchisee</td><td>Franchisee</td><td>Franchise fee, royalty, system fees</td><td>Rapid network growth with local operators</td></tr>
+  </table></div>
+  <div class="grid" style="margin-top:20px">
+    <div class="card"><h4>⚠️ Direct lease: high control, high fragility</h4><p>Duration mismatch — fixed long-term obligations against variable monthly revenue. WeWork held ~$47B in lease commitments against ~$1.8B revenue; it filed Chapter 11 in Nov 2023 and emerged June 2024 after cutting $4B+ of debt and $12B of future rent.</p></div>
+    <div class="card"><h4>✅ Management agreement: the post-WeWork standard</h4><p>Hotel-management economics applied to office floors. Lower upside per location, far lower downside. The operator scales on capability, brand, systems, and community — not its balance sheet.</p></div>
+    <div class="card"><h4>🔁 Franchise: network without ownership</h4><p>Fast network growth with local expertise — but quality control, community consistency, and brand dilution become central risks. Each location becomes a different business with the same logo without strong playbooks.</p></div>
+    <div class="card"><h4>🏢 Owner-operator: both margins</h4><p>Captures real estate and operating margin, with flexibility to convert floors. Capital intensive and concentrated — the ecosystem advantage must justify being long one building in one neighbourhood.</p></div>
+  </div>
+</div></section>
+
+<section id="unit"><div class="wrap">
+  <h2>5 · Unit Economics: Where Money Is Made and Lost</h2>
+  <p class="sub">The core economics are simple to state and hard to execute.</p>
+  <h3>The retail arbitrage</h3>
+  <p>Office space leasing wholesale at ~$22/sq ft/year retails as memberships at an effective $45–$70/sq ft — roughly <strong>2.0x–3.2x wholesale rent</strong>, before operating costs. That spread is gross headroom, not profit.</p>
+  <h3>Revenue mix: private offices carry the P&amp;L</h3>
+  <div class="stats">
+    <div class="stat"><div class="num">~70%</div><div class="lbl">of revenue from membership fees</div></div>
+    <div class="stat"><div class="num">~60%</div><div class="lbl">of total revenue from private offices (&lt;50% of floor space)</div></div>
+    <div class="stat"><div class="num">15–25%</div><div class="lbl">stabilized operator margins</div></div>
+    <div class="stat"><div class="num">$40–$120</div><div class="lbl">build-out cost per sq ft</div></div>
+  </div>
+  <p style="margin-top:14px">Design the floor for the profit engine: price private offices to cover lease costs, and use common areas and amenities as differentiators.</p>
+  <h3>Break-even math</h3>
+  <div class="formula">Break-even seats = (Monthly costs − Extra income) ÷ Average revenue per seat</div>
+  <p>Verified against a 120-seat example: $550,000 monthly costs, $60,000 extra income, $6,000 per seat → <strong>81.7 seats = 68.1% occupancy with extras</strong>; 91.7 seats = 76.4% without. Rule of thumb: break-even at 60–70% in Tier-2 cities, 65–75% in Tier-1, with most new centers losing money for the first 5–7 months.</p>
+  <h3>Three levers that move break-even</h3>
+  <div class="grid">
+    <div class="card"><h4>1 · Monthly costs</h4><p>Mostly rent. The time to move it is before signing — rent-free fit-out months, step-up rent, revenue-share or exit clauses.</p></div>
+    <div class="card"><h4>2 · Average revenue per seat</h4><p>Cabins/private offices sell at 2–2.5x desk price per seat and churn less. Moving 25%→40% of seats into cabins lifts average revenue without raising a single price.</p></div>
+    <div class="card"><h4>3 · Extra income</h4><p>Meeting rooms, day passes, virtual offices, weekend events — using assets you already have. In the example, $60k/month of extras saved ten seats of selling every month.</p></div>
+  </div>
+  <div class="quote">Coworking revenue rebuilds monthly. Community stickiness, programming, relationships, and a manager who knows names are retention infrastructure, not decoration.</div>
+  <h3>Cost to open</h3>
+  <p>A 10,000–12,000 sq ft neighbourhood location typically requires <strong>$600k–$1.5M</strong> all-in via the lease model — far less operator capital under a landlord-funded management agreement. Budget the ramp as part of capex; 6–12 months of working capital is commonly needed to survive lease-up.</p>
+</div></section>
+
+<section id="cases"><div class="wrap">
+  <h2>6 · Operator Case Studies</h2>
+  <p class="sub">Six strategic lessons from the market's defining players.</p>
+  <div class="grid">
+    <div class="card"><span class="tag">IWG</span><h4>Scale + capital-light pivot</h4><p>$4.45B system-wide revenue in 2025 (highest ever). 1,089 new partnership locations, +28% YoY. Lesson: scale works only if contract structure shifts risk and capital to partners.</p></div>
+    <div class="card"><span class="tag">Industrious / CBRE</span><h4>Management contracts as quiet revolution</h4><p>Built on management contracts, funded deal-by-deal, $800M acquisition by CBRE. Neighbourhood locations fill three times faster than CBD. Lesson: the funding model shapes the strategy.</p></div>
+    <div class="card"><span class="tag">WeWork 2.0</span><h4>Discipline, enterprise, partnerships</h4><p>Returned to profitability in 2025 with $2.3B revenue and ~300 AI companies as members. Lesson: brand survives bankruptcy; discipline replaces "community for everyone" with enterprise reliability.</p></div>
+    <div class="card"><span class="tag">Convene / NeueHouse</span><h4>Hospitality as the differentiator</h4><p>Acquired NeueHouse (2026) — meetings, events, and premium workspace as one hospitality product. Lesson: in premium segments, hospitality is not an add-on; it is the product.</p></div>
+    <div class="card"><span class="tag">Niche ecosystems</span><h4>Depth beats breadth</h4><p>A biotech founder doesn't need 500 random contacts — they need a lab partner, a regulatory advisor, and a first customer. Risk: market size; be honest about the 15-minute-drive catchment.</p></div>
+    <div class="card"><span class="tag">Landlord-led &amp; independents</span><h4>Amenity as strategy · local rootedness as moat</h4><p>Institutional landlords run flex as amenity and leasing funnel; independents win on local knowledge, curation, and trust — especially in regional networks outside major cities.</p></div>
+  </div>
+</div></section>
+
+<section id="playbook"><div class="wrap">
+  <h2>7 · Strategic Playbook: Five Moves</h2>
+  <p class="sub">From value proposition to monetizing the ecosystem — not just the desk.</p>
+  <div class="moves">
+    <div class="move"><h4>Choose a sharp value proposition and a sharp member</h4><p>Don't serve "everyone who needs a desk." Pick one primary member (remote professionals, scaling teams, founders, enterprise satellites) and one primary outcome. Everything else flows from that choice.</p></div>
+    <div class="move"><h4>Design for encounters, then manage them</h4><p>One purposeful community event per week; structured introductions (three relevant intros in a new member's first two weeks); partner office hours; a current skills-needs-offers directory; monthly member pulse.</p></div>
+    <div class="move"><h4>Pick the contract that matches your risk appetite</h4><p>Operators with limited capital → management agreements or revenue shares. Landlords with vacant space → partner with a proven operator. Brands with systems → franchise. Don't sign a master lease for control and inherit the downside.</p></div>
+    <div class="move"><h4>Build the partnership layer</h4><p>Professional services, growth partners (mentors, accelerators, universities), corporate buyers, local businesses, and technology — reciprocal arrangements that bring retention, referral, and ancillary revenue.</p></div>
+    <div class="move"><h4>Monetize the ecosystem, not just the desk</h4><p>Meeting rooms, day passes, virtual offices, evening/weekend events, paid programming, concierge services, disclosed referral fees. Sell what you already have, to people who already trust you, before you buy more space.</p></div>
+  </div>
+</div></section>
+
+<section id="risks"><div class="wrap">
+  <h2>8 · Risks and Failure Modes</h2>
+  <p class="sub">Every failure mode has a known mitigation.</p>
+  <div class="risk"><h4>Lease duration mismatch</h4><div class="mit"><strong>Mitigate:</strong> management agreements, revenue shares, exit clauses, conservative rent.</div></div>
+  <div class="risk"><h4>Collaboration decay</h4><div class="mit"><strong>Mitigate:</strong> dedicated community manager, structured introductions, programming tied to member goals.</div></div>
+  <div class="risk"><h4>Over-scaling</h4><div class="mit"><strong>Mitigate:</strong> scaling ladder — prove unit economics, document operations, then expand.</div></div>
+  <div class="risk"><h4>Brand dilution in franchising</h4><div class="mit"><strong>Mitigate:</strong> onboarding, audits, ongoing coaching.</div></div>
+  <div class="risk"><h4>Valuation risk at high flex share</h4><div class="mit"><strong>Mitigate:</strong> keep flex &lt;~17% of building rentable area; treat it as amenity and absorption engine, not majority tenant.</div></div>
+  <div class="risk"><h4>Small-market demand risk</h4><div class="mit"><strong>Mitigate:</strong> lower rent, leaner footprint, regional network membership, public/institutional partners.</div></div>
+  <div class="risk"><h4>AI and remote-work shifts</h4><div class="mit"><strong>Mitigate:</strong> flexibility itself — shorter commitments, modular space, services that help members adapt.</div></div>
+</div></section>
+
+<section id="dashboard"><div class="wrap">
+  <h2>9 · The Ecosystem Dashboard</h2>
+  <p class="sub">Run the space on six weekly numbers plus three ecosystem numbers.</p>
+  <div class="dash">
+    <div class="card"><h4>📊 Weekly operating numbers</h4><ul>
+      <li><span>Occupancy %</span> — seats sold ÷ seats available</li>
+      <li><span>Revenue per seat</span> — total revenue ÷ total seats</li>
+      <li><span>Churn %</span> — members lost ÷ members at month start</li>
+      <li><span>Lead-to-member conversion</span> — enquiries that become members</li>
+      <li><span>Collections</span> — share of invoices paid on time</li>
+      <li><span>Meeting-room use %</span> — hours booked ÷ hours available</li>
+    </ul></div>
+    <div class="card"><h4>🌐 Ecosystem numbers (monthly)</h4><ul>
+      <li><span>Introductions made &amp; completed</span> — how many curated intros, and how many led to a meeting, deal, hire, or collaboration</li>
+      <li><span>Referral rate</span> — share of new members who came from existing members</li>
+      <li><span>Ancillary revenue per member</span> — meeting rooms, events, services, partnerships beyond base membership</li>
+    </ul></div>
+  </div>
+  <div class="quote">If occupancy is high but introductions and referrals are low, you have a real estate business, not an ecosystem. If introductions are high but collections are low, you have a community that cannot pay its rent. Both must be healthy.</div>
+
+  <h3 style="margin-top:44px">Recommendations by Actor</h3>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="t1">Operator</button>
+    <button class="tab-btn" data-tab="t2">Landlord / Owner</button>
+    <button class="tab-btn" data-tab="t3">Corporate Occupier</button>
+    <button class="tab-btn" data-tab="t4">City / University / EDO</button>
+  </div>
+  <div class="tab-panel active" id="t1"><p>Pick one member segment, one contract model, and one neighbourhood. Prove break-even, then prove retention. Invest in the community manager as a core hire. Build partnerships before you build a second location. Treat extra income as a strategic lever, not an afterthought.</p></div>
+  <div class="tab-panel" id="t2"><p>Use flex as an amenity and absorption engine, not a speculative tenant. Offer a management agreement to a proven operator. Keep flex share moderate to protect valuation and lender comfort. Use the coworking floor as a pipeline — members who outgrow desks become long-term tenants upstairs.</p></div>
+  <div class="tab-panel" id="t3"><p>Adopt core-plus-flex deliberately. Keep core space for stability and culture; use flex for project teams, new-market entry, satellite teams, and uncertainty. Evaluate operators on security, IT, experience consistency, and enterprise service — and ask how the operator will help your teams connect, not just sit.</p></div>
+  <div class="tab-panel" id="t4"><p>In smaller and peripheral markets the value is often social and economic: entrepreneurship, talent retention, and local network density. Partner with an operator, provide anchor demand or subsidized space, and connect the space to regional networks, universities, and local industry. Measure success in startups supported, jobs created, and talent retained.</p></div>
+</div></section>
+
+<section id="outlook"><div class="wrap">
+  <h2>10 · Outlook</h2>
+  <p class="sub">From niche real estate product to core infrastructure for how work gets done.</p>
+  <p>The winners will not be those who sign the most leases or build the prettiest lounges. They will be those who do three things well: <strong>choose a clear ecosystem role, align partners around a sharp value proposition, and manage collaboration as a disciplined process.</strong></p>
+  <p>Occupancy is recovering, profitability is improving, and capital is returning to sustainable models. The operators who learned the lessons of the last cycle — management agreements over lease arbitrage, unit economics over growth at all costs, community management over hope — are now the ones scaling. For an operator, landlord, or occupier who can build a genuine ecosystem rather than just rent desks, that is a durable advantage.</p>
+</div></section>
+
+<footer><div class="wrap">
+  <strong>Sources &amp; limitations.</strong>
+  <p>This report synthesizes industry reports, academic studies, and practitioner guides: JLL's <em>The Flexible Office Space Imperative</em> (April 2026), Deskmag's 2025 Coworking Trends Survey, Grand View Research market sizing, IWG 2025 results, Iansiti &amp; Levien (keystone strategy), Adner (ecosystem-as-structure), Cabral (social capital in coworking), Haefliger &amp; Yacoub (collaborative practices), and practitioner guides from Yardi Kube, CoWorkRM, and Long Game.</p>
+  <p style="margin-top:8px">Market sizing from vendors varies by definition and should be treated as directional. Deskmag survey data is self-reported by operators. Academic studies cited are often small-sample or single-case. Unit economics examples are illustrative and must be replaced with local rent, pricing, and cost data before any investment decision.</p>
+  <p style="margin-top:14px">⟡ CoWork Collaboration Ecosystem as a Service — Business Strategy Report, 2026.</p>
+</div></footer>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+    document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
